@@ -123,6 +123,33 @@ Project/fast:
 	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/build
 .PHONY : Project/fast
 
+Fonction.o: Fonction.cpp.o
+
+.PHONY : Fonction.o
+
+# target to build an object file
+Fonction.cpp.o:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/Fonction.cpp.o
+.PHONY : Fonction.cpp.o
+
+Fonction.i: Fonction.cpp.i
+
+.PHONY : Fonction.i
+
+# target to preprocess a source file
+Fonction.cpp.i:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/Fonction.cpp.i
+.PHONY : Fonction.cpp.i
+
+Fonction.s: Fonction.cpp.s
+
+.PHONY : Fonction.s
+
+# target to generate assembly for a file
+Fonction.cpp.s:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/Fonction.cpp.s
+.PHONY : Fonction.cpp.s
+
 callbacks.o: callbacks.cpp.o
 
 .PHONY : callbacks.o
@@ -213,6 +240,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Project"
+	@echo "... Fonction.o"
+	@echo "... Fonction.i"
+	@echo "... Fonction.s"
 	@echo "... callbacks.o"
 	@echo "... callbacks.i"
 	@echo "... callbacks.s"

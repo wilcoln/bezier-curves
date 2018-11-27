@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+/home/wilcoln/CLionProjects/projetMath/Fonction.h
+array
+-
+iostream
+-
+
 /home/wilcoln/CLionProjects/projetMath/utils.cpp
 utils.h
 /home/wilcoln/CLionProjects/projetMath/utils.h
@@ -21,4 +27,6 @@ stdio.h
 -
 stdlib.h
 -
+Fonction.h
+/home/wilcoln/CLionProjects/projetMath/Fonction.h
 

@@ -26,6 +26,11 @@ void clavier(unsigned char touche,int x,int y)
         case '4' : trX+=0.25;  glutPostRedisplay();  break;
         case '8' : trY+=0.25;  glutPostRedisplay();  break;
         case '2' : trY-=0.25;  glutPostRedisplay();  break;
+        //Nouvelle entrée
+        case 'n' :
+            nouvelle_entree();
+            glutPostRedisplay();
+            break;
     }
 }
 

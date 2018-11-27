@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.6)
 
 set(CMAKE_CXX_STANDARD 11)
-set(SOURCE_FILES main.cpp utils.h utils.cpp callbacks.h callbacks.cpp)
+set(SOURCE_FILES main.cpp utils.h utils.cpp callbacks.h callbacks.cpp Fonction.cpp Fonction.h)
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 

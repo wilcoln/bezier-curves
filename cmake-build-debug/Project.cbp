@@ -84,6 +84,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/wilcoln/CLionProjects/projetMath/Fonction.cpp">
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/home/wilcoln/CLionProjects/projetMath/Fonction.h">
+			<Option target="Project"/>
+		</Unit>
 		<Unit filename="/home/wilcoln/CLionProjects/projetMath/callbacks.cpp">
 			<Option target="Project"/>
 		</Unit>

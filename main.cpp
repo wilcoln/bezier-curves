@@ -23,14 +23,17 @@ int anglex,angley,x,y,xold,yold;
 //-***********************************************************
 void init();
 
+Fonction f = Fonction({0,1,1,1},{0,1,1}); // fonction d'exemple
 int main(int argc,char **argv)
 {
     /* initialisation de glut et creation de la fenetre */
+//    Fonction f = nouvelle_entree();
+
     glutInit(&argc,argv);
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
     glutInitWindowPosition(0,0);
     glutInitWindowSize(1000,1000);
-    glutCreateWindow("Courbes de béziers");
+    glutCreateWindow("Courbes de beziers");
     /* Initialisation d'OpenGL */
     glClearColor(1.0,1.0,1.0,0.0);
     glColor3f(0.0,0.0,0.0);
@@ -71,10 +74,6 @@ int main(int argc,char **argv)
  **                                                            **
  ****************************************************************/
 
-//fonction ou les objets sont a definir
-double f(double x){
-    return x*x;
-}
 void init()
 {
     double xO=0.,yO=0.,xI=1.,yI=0.,xJ=0.,yJ=1.;
@@ -94,9 +93,7 @@ void init()
     glEndList();
 
     glNewList(4,GL_COMPILE_AND_EXECUTE);  // Trace les asymptotes
-    double a[] = {0,0,0, 1};
-    double b[] = {0,1,2};
-    tracer_asymptotes(a, b);
+    tracer_asymptotes(f);
     glEndList();
 
     glNewList(5,GL_COMPILE_AND_EXECUTE);  //Trace la courbe de bézier

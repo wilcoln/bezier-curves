@@ -21,7 +21,21 @@ void tracer_courbe( double (* f)( double ), double a, double b){
     for(double t = a; t <= b; t+=.005)
         openGL(t,f(t), 0,0,1,1.);
 }
-void tracer_asymptotes(double a[], double b[]){
-    // Enumérer les cas
+void tracer_courbe( const Fonction& fonction, double a, double b){
+    for(double t = a; t <= b; t+=.005)
+        openGL(t,fonction.fn(t), 0,0,1,1.);
+}
+void tracer_asymptotes(const Fonction& fonction){
+    std::array<short, 2> degres = fonction.degres;
 
+}
+Fonction nouvelle_entree(){
+    std::array<double, 4> a{0};
+    std::array<double, 3> b{0};
+    std::cout << "<========== *************** Saisie d'une fonction ******************** =========>"<<std::endl;
+    std::cout << "Entrez a0 a1 a2 et a3 successivement séparés d'un espace"<<std::endl;
+    std::cin>> a[0] >> a[1] >> a[2] >> a[3];
+    std::cout << "Entrez b0 b1 et b2 successivement séparés d'un espace"<<std::endl;
+    std::cin>> b[0] >> b[1] >> b[2];
+    return Fonction(a,b);
 }
