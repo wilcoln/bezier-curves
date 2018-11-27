@@ -23,7 +23,7 @@ int anglex,angley,x,y,xold,yold;
 //-***********************************************************
 void init();
 
-Fonction f = Fonction({1,1,1,1},{1,1,1}); // fonction d'exemple
+Fonction f = Fonction({0,0,0,1},{1,0,0}); // fonction d'exemple
 int main(int argc,char **argv)
 {
     /* initialisation de glut et creation de la fenetre */
@@ -89,8 +89,8 @@ void init()
     glEndList();
 
     glNewList(3,GL_COMPILE_AND_EXECUTE);  //Trace la courbe
-    tracer_courbe(f, -GLUT_WINDOW_WIDTH/2, GLUT_WINDOW_WIDTH/2);
-    f.affiche();
+//    tracer_courbe(f, -GLUT_WINDOW_WIDTH/2,GLUT_WINDOW_WIDTH/2);
+    tracer_courbe(f, 0,1);
     glEndList();
 
     glNewList(4,GL_COMPILE_AND_EXECUTE);  // Trace les asymptotes

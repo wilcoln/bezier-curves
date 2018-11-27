@@ -29,8 +29,24 @@ void trace_segment(double x0, double y0,double x1, double y1, double red, double
     glEnd(); // fin de glBegin
 }
 void tracer_courbe(const Fonction& fonction, double a, double b){
-    for(double t = a; t < b; t+=dt)
-        openGL(t,fonction.fn(t), 0,0,1,1);
+    double x;
+    if(b == HUGE_VAL){
+        for(double t = 0; t <= 1; t+=dt){
+            x = a - 1 + 1/t;
+            openGL(x,fonction.fn(x), 0,0,1,1);
+        }
+    }else if(a == -HUGE_VAL){
+        for(double t = 0; t <= 1; t+=dt){
+            x = -1/t + b + 1;
+            openGL(x,fonction.fn(x), 0,0,1,1);
+        }
+    }else{
+        for(double t = 0; t <= 1; t+=dt){
+            x = a + t*(b-a);
+            openGL(x,fonction.fn(x), 0,0,1,1);
+        }
+    }
+
         //trace_segment(t, fonction.fn(t), t + dt, fonction.fn(t + dt), 0,0,1,1);
 }
 void tracer_asymptotes(const Fonction& f){

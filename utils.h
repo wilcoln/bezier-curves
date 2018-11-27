@@ -11,7 +11,7 @@
 #include <stdlib.h>
 #include "Fonction.h"
 
-const double dt = .005;
+const double dt = .00002;
 
 void openGL(double x, double y, double r0,double g0, double b0, double size);
 void trace_segment(double x0, double y0,double x1, double y1, double red, double green, double blue, double size);

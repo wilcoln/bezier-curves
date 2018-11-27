@@ -17,10 +17,12 @@ Fonction::Fonction(std::array<double, 4> a, std::array<double, 3> b) {
         degres[1]++;
     if(b[2] != 0)
         degres[1]++;
+    affiche();
 }
 double Fonction::fn(double x) const{
     double x2(x*x),x3(x*x*x);
     return (a[3]*x3 + a[2]*x2 + a[1]*x + a[0])/(b[2]*x2 + b[1]*x + b[0]);
+
 }
 Fonction::~Fonction() {
 }

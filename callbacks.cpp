@@ -98,8 +98,8 @@ void affichage()
     glTranslatef(-trX,trY,0.);
     glCallList(1); // appel de la liste numero 1
     glCallList(2);   // appel de la liste numero 2
-    tracer_courbe(f, -GLUT_WINDOW_WIDTH/2, GLUT_WINDOW_WIDTH/2);
-    tracer_asymptotes(f);
+    glCallList(3); // appel de la liste numero 3
+    glCallList(4);   // appel de la liste numero 4
     glFlush();
     // On echange les buffers
     glutSwapBuffers();
