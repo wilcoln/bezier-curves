@@ -14,9 +14,9 @@ Fonction::Fonction(std::array<double, 4> a, std::array<double, 3> b) {
     if(a[3] != 0)
         degres[0]++;
     if(b[1] != 0)
-        degres[0]++;
+        degres[1]++;
     if(b[2] != 0)
-        degres[0]++;
+        degres[1]++;
 }
 double Fonction::fn(double x) const{
     double x2(x*x),x3(x*x*x);
@@ -30,4 +30,8 @@ void Fonction::affiche() const {
     std::cout << "f(x) = ----------------------- "<<std::endl;
     std::cout << "       " << b[2] <<"*x^2 + " << b[1] <<"*x + " << b[0]<<std::endl;
 
+}
+
+Degres Fonction::getDegres() const { ;
+    return (Degres)(3*degres[0] + degres[1]);
 }

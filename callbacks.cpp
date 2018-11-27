@@ -6,33 +6,8 @@ extern double Scal;
 extern double trX,trY,dist;//,trZ=0.0
 extern char presse;
 extern int anglex,angley,x,y,xold,yold;
-void clavier(unsigned char touche,int x,int y)
-{
-    switch (touche)
-    {
-        case 'q' : /*la touche 'q' permet de quitter le programme */
-            exit(0);
-        case '+' :
-            dist+=0.5;
-            Scal=Scal+0.5;
-            glutPostRedisplay();
-            break;
-        case '-' :
-            dist-=0.5;
-            Scal=Scal-0.5;
-            glutPostRedisplay();
-            break;
-        case '6' : trX-=0.25;  glutPostRedisplay();  break;
-        case '4' : trX+=0.25;  glutPostRedisplay();  break;
-        case '8' : trY+=0.25;  glutPostRedisplay();  break;
-        case '2' : trY-=0.25;  glutPostRedisplay();  break;
-        //Nouvelle entrée
-        case 'n' :
-            nouvelle_entree();
-            glutPostRedisplay();
-            break;
-    }
-}
+extern Fonction f;
+
 
 
 
@@ -76,6 +51,34 @@ void mousemotion(int x,int y)
     xold=x; /* sauvegarde des valeurs courante de le position de la souris */
     yold=y;
 }
+void clavier(unsigned char touche,int x,int y)
+{
+    switch (touche)
+    {
+        case 'q' : /*la touche 'q' permet de quitter le programme */
+            exit(0);
+        case '+' :
+            dist+=0.5;
+            Scal=Scal+0.5;
+            glutPostRedisplay();
+            break;
+        case '-' :
+            dist-=0.5;
+            Scal=Scal-0.5;
+            glutPostRedisplay();
+            break;
+        case '6' : trX-=0.25;  glutPostRedisplay();  break;
+        case '4' : trX+=0.25;  glutPostRedisplay();  break;
+        case '8' : trY+=0.25;  glutPostRedisplay();  break;
+        case '2' : trY-=0.25;  glutPostRedisplay();  break;
+            //Nouvelle entrée
+        case 'n' :
+            f = nouvelle_entree();
+            f.affiche();
+            glutPostRedisplay();
+            break;
+    }
+}
 
 void affichage()
 {
@@ -95,8 +98,10 @@ void affichage()
     glTranslatef(-trX,trY,0.);
     glCallList(1); // appel de la liste numero 1
     glCallList(2);   // appel de la liste numero 2
-    glCallList(3);
+    tracer_courbe(f, -GLUT_WINDOW_WIDTH/2, GLUT_WINDOW_WIDTH/2);
+    tracer_asymptotes(f);
     glFlush();
     // On echange les buffers
     glutSwapBuffers();
 }
+
