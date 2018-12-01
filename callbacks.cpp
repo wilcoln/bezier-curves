@@ -100,6 +100,7 @@ void affichage()
     glCallList(2);   // appel de la liste numero 2
     glCallList(3); // appel de la liste numero 3
     glCallList(4);   // appel de la liste numero 4
+    glCallList(5);   // appel de la liste numero 4
     glFlush();
     // On echange les buffers
     glutSwapBuffers();

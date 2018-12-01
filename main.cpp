@@ -23,7 +23,7 @@ int anglex,angley,x,y,xold,yold;
 //-***********************************************************
 void init();
 
-Fonction f = Fonction({0,0,0,1},{1,0,0}); // fonction d'exemple
+Fonction f = Fonction({0,.5,.5,1},{0,1,1}); // fonction d'exemple
 int main(int argc,char **argv)
 {
     /* initialisation de glut et creation de la fenetre */
@@ -89,21 +89,21 @@ void init()
     glEndList();
 
     glNewList(3,GL_COMPILE_AND_EXECUTE);  //Trace la courbe
-//    tracer_courbe(f, -GLUT_WINDOW_WIDTH/2,GLUT_WINDOW_WIDTH/2);
-    tracer_courbe(f, 0,1);
+    tracer_courbe(f, -GLUT_WINDOW_WIDTH/2, GLUT_WINDOW_WIDTH/2);
     glEndList();
 
     glNewList(4,GL_COMPILE_AND_EXECUTE);  // Trace les asymptotes
     tracer_asymptotes(f);
     glEndList();
 
-    glNewList(5,GL_COMPILE_AND_EXECUTE);  //Trace la courbe de bézier
-
+    glNewList(5,GL_COMPILE_AND_EXECUTE);  //Placer points de ctrl
+    std::array<std::array<double,2>,4> pts = pointsCtrl(f);
+    std::array<double, 4> pds = calculPoids(f);
+    for(auto pt: pts) {
+        openGL(pt[0], pt[1], .5, .5, 0, 10);
+        std::cout << pt[0] <<" "<< pt[1] << endl;
+    }
     glEndList();
-
-
-    cout<<"\n Voila, c'est fini"<<endl;
-
 }
 
 

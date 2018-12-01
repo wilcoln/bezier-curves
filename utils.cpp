@@ -1,4 +1,5 @@
 #include "utils.h"
+
 double delta(std::array<double,3> a){
     return a[1]*a[1] - 4*a[2]*a[0];
 }
@@ -10,6 +11,49 @@ std::array<double, 2> solveQ2S(std::array<double,3> a){
 double solveQ1S(std::array<double, 3> a){
     return -a[1]/(2*a[3]);
 }
+std::array<double, 2> multiplie(const std::array<double, 2>& vect, const std::array<std::array<double, 2>, 2>& mat){
+    return {(vect[0]*mat[0][0] + vect[1]*mat[0][1]), (vect[0]*mat[1][0] + vect[1]*mat[1][1]) };
+}
+std::array<double, 3> multiplie(const std::array<double, 3>& vect, const std::array<std::array<double, 3>, 3>& mat){
+    return {(vect[0]*mat[0][0] + vect[1]*mat[0][1] + vect[2]*mat[0][2]), (vect[0]*mat[1][0] + vect[1]*mat[1][1] + vect[2]*mat[1][2]), (vect[0]*mat[2][0] + vect[1]*mat[2][1] + vect[2]*mat[2][2])};
+}
+
+std::array<double, 4> multiplie(const std::array<double, 4>& vect, const std::array<std::array<double, 4>, 4>& mat) {
+    std::array<double, 4> result{0};
+    for (int i = 0; i < 4; i++){
+        for (int j = 0; j < 4; j++) {
+            result[i] += vect[j] * mat[i][j];
+        }
+    }
+
+    return result;
+
+}
+
+std::array<double, 3> multiplieParT(const std::array<double, 2>& vect){
+    return {0,vect[0],vect[1]};
+}
+std::array<double, 4> multiplieParT(const std::array<double, 3>& vect){
+    return {0,vect[0],vect[1],vect[2]};
+}
+std::array<double, 4> calculPoids(Fonction const& f){
+    return multiplie({f.b[0],f.b[1],f.b[2], 0}, MCB3);
+}
+std::array<std::array<double,2>,4> pointsCtrl(Fonction const& f){
+    std::array<double, 4> tQB = multiplieParT(f.b);
+    std::array<double, 4> PB = multiplie(f.a,MCB3);
+    std::array<double, 4> pds = calculPoids(f);
+    return {tQB[0]/pds[0], PB[0]/pds[0],
+            tQB[1]/pds[1], PB[1]/pds[1],
+            tQB[2]/pds[2], PB[2]/pds[2],
+            tQB[3]/pds[3], PB[3]/pds[3]};
+
+
+}
+/*std::array<double, 4> poids(Fonction const& f){
+    std::array<double, 4> b{f.b[0],f.b[1],f.b[2],0};
+    return multiplie(b, MCB3);
+}*/
 void openGL(double x, double y, double r0,double g0, double b0, double size)
 {
     glColor3f(r0,g0,b0);	//initialisation de la couleur
