@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/projetMath.dir/main.cpp.o  -o projetMath 
